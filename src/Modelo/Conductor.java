@@ -11,7 +11,7 @@ public class Conductor {
         this.nit = nit;
     }
     
-    //Constructor de conversion
+    //Constructor de Archivo a Objeto
     public Conductor(String lineaTexto){
         String[] atributos = lineaTexto.split(",");
         this.nombre = atributos[0];
