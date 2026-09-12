@@ -10,7 +10,6 @@ public class Conductor {
         this.nombre = nombre;
         this.nit = nit;
     }
-    
     //Constructor de Archivo a Objeto
     public Conductor(String lineaTexto){
         String[] atributos = lineaTexto.split(",");
@@ -23,12 +22,12 @@ public class Conductor {
         return "NOMBRE: " + nombre + "\n" +
                "NIT: " + nit +"\n";
     }
-    public String guardarVehiculos(){
+    public String guardarConductor(){
      return nombre + "," + nit;  
     }
     //getters
     public String getNombre() {return nombre;}
-    public int getId() {return nit;}
+    public int getNit() {return nit;}
     //setters
     public void setNombre(String nombre) {this.nombre = nombre;}
     public void setId(int nit) {this.nit = nit;}

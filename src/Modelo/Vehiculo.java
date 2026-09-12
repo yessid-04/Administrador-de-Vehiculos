@@ -15,14 +15,14 @@ package Modelo;
         this.conductor = conductor;
         this.kmRecorridos = kmRecorridos;
     }
-    //Constructor de conversion
+    //Constructor de Texto a objeto
     public Vehiculo(String lineaTexto){
         String[] atributos = lineaTexto.split(",");
         this.id = atributos[0];
         this.modelo = atributos[1];
         this.placa = atributos[2];
     }
-    //Metodos
+    //Metodo para imprimir la informaicon basica
     public String mostrarInfo(){
         return "ID: " + id + "\n" +
                "Modelo: " + modelo +"\n" +
@@ -30,6 +30,7 @@ package Modelo;
                "Conductor: " + conductor + "\n" + 
                "Recorrido del viaje: " + kmRecorridos ; 
     }
+    //metodo de Obejto a Constructor
     public String guardarVehiculos(){
      return id + "," + modelo + "," + placa ;   
     }
@@ -39,14 +40,10 @@ package Modelo;
     public String getId() {return id ; }
     public Conductor getConductor() { return conductor; }
     public double getKmRecorridos() { return kmRecorridos;}
-    
     //setters
     public void setModelo(String modelo) {this.modelo = modelo;}
     public void setPlaca(String placa) {this.placa = placa;}
     public void setId(String id) {this.id = id;}    
     public Conductor setConductor(Conductor conductor) { this.conductor = conductor; return null;}
-    public double setKmRecorridos(double kmReocrridos) { this.kmRecorridos = kmRecorridos ;return 0;
+    public double setKmRecorridos(double kmReocrridos) { this.kmRecorridos = kmRecorridos ;return 0;}  
 }
-    
-}
-

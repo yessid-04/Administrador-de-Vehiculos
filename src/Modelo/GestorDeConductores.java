@@ -8,20 +8,20 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 
-public class GestorDeVehiculos {
-    private final List<Vehiculo> vehiculos; 
+public class GestorDeConductores {
+    private final List<Conductor> conductores; 
     //constructor
-    public GestorDeVehiculos() {
-       this.vehiculos = new ArrayList<>();
-       File archivo = new File("vehiculos.txt");
+    public GestorDeConductores() {
+       this.conductores = new ArrayList<>();
+       File archivo = new File("conductores.txt");
        if (archivo.exists()) {
             try {
                 FileReader LeerArchivo = new FileReader(archivo);
                 try (BufferedReader leerLineas = new BufferedReader(LeerArchivo)) {
                     String linea;
                     while ((linea = leerLineas.readLine()) != null) {
-                        Vehiculo nuevoVehiculo = new Vehiculo(linea);
-                        this.vehiculos.add(nuevoVehiculo);
+                        Conductor nuevoConductor = new Conductor(linea);
+                        this.conductores.add(nuevoConductor);
                     }
                 }
             } catch (IOException e) {
@@ -31,30 +31,30 @@ public class GestorDeVehiculos {
             System.out.println("No hay archivo, se empezará desde cero.");
           }
     }
-    //agregar un nuevo Vehiculo a la lista
-    public void agregarVehiculos(Vehiculo v) {
-        vehiculos.add(v);
+    //metodo para agregar un nuevo conductor al archivo
+    public void agregarConductor(Conductor c) {
+        conductores.add(c);
         try {
-            FileWriter puente = new FileWriter("vehiculos.txt", true);
+            FileWriter puente = new FileWriter("conductores.txt", true);
             PrintWriter escribir = new PrintWriter(puente);
-            String textoDelVehiculo = v.guardarVehiculos();
-            escribir.println(textoDelVehiculo);
+            String textoDelConductor = c.guardarConductor();
+            escribir.println(textoDelConductor);
             escribir.close();
-            System.out.println("Vehículo guardado con exito");
+            System.out.println("Conductor guardado con exito");
 
         } catch (IOException e) {
             System.out.println("No se pudo guardar en el archivo: " + e.getMessage());
         }
     }
-    //enlistar todos los vehiculos existentes 
-    public List<Vehiculo> buscarTodos() {
-        return new ArrayList<>(vehiculos);
+    //en listar todos los conductores
+    public List<Conductor> buscarTodos() {
+        return new ArrayList<>(conductores);
     }
-    //filtrar por id de cada vehiculo
-    public Vehiculo buscarPorIdVehiculo(String id) {
-        for (Vehiculo v : vehiculos) {
-            if (v.getId().equals(id)) { 
-                return v;
+    //filtrar por nit de conductor
+    public Conductor buscarPorNit(int nit) {
+        for (Conductor c : conductores) {
+            if (c.getNit() == nit) { 
+                return c;
             }
         }
         return null;
