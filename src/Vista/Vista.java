@@ -17,47 +17,107 @@ public class Vista {
         System.out.println("4. Mostrar listado de conductores existentes");
         System.out.println("5. Salir");
     }
-    public int leerOpccion() {
-        int opccion = scanner.nextInt();
-        scanner.nextLine();
-        return opccion;
+    public int leerOpcion() {
+        try {
+            int opccion = scanner.nextInt();
+            scanner.nextLine();
+            return opccion;
+        } catch (Exception e) {
+            scanner.nextLine(); // Limpia el error
+            return -1;
+        }
     }
     //////////////////////////////////////////////////////////////////
     public String leerID() {
-        System.out.print("ID del vehiculo: ");
-        return scanner.nextLine();
+        String id = "";
+        while (id.isEmpty()) {
+            System.out.print("ID del vehiculo: ");
+            id = scanner.nextLine().trim();
+            if (id.isEmpty()) {
+                System.out.println("⚠️ El ID no puede estar vacío.");
+            }
+        }
+        return id;
     }
     public String leerModelo() {
-        System.out.print("Modelo del vehiculo: ");
-        return scanner.nextLine();
+        String modelo = "";
+        while (modelo.isEmpty()) {
+            System.out.print("Modelo del vehiculo: ");
+            modelo = scanner.nextLine().trim();
+            if (modelo.isEmpty()) {
+                System.out.println("⚠ El modelo no puede estar vacío.");
+            }
+        }
+        return modelo;
     }
-     public String leerPlaca() {
-        System.out.print("Placa del vehiculo: ");
-        return scanner.nextLine();
+    public String leerPlaca() {
+        String placa = "";
+        while (placa.isEmpty()) {
+            System.out.print("Placa del vehiculo: ");
+            placa = scanner.nextLine().trim();
+            if (placa.isEmpty()) {
+                System.out.println(" La placa no puede estar vacía.");
+            }
+        }
+        return placa;
     }
-    public int leerNitDeConductor() {
-        System.out.print("Digite el NIT del conductor para este vehículo: ");
-        int nit = scanner.nextInt();
-        scanner.nextLine();
+    public int SeleccionarNitDeConductor() {
+        int nit = -1;
+        while (nit <= 0) {
+            System.out.print("Digite el NIT del conductor para este vehículo: ");
+            try {
+                nit = scanner.nextInt();
+                scanner.nextLine();
+                if (nit <= 0) System.out.println("El NIT debe ser un número positivo.");
+            } catch (Exception e) {
+                System.out.println("Error: Ingrese solo números para el NIT.");
+                scanner.nextLine(); // Limpia error
+            }
+        }
         return nit;
     }
     public double leerCantidadDeKilometros() {
-        System.out.print("Ingrese la cantidad de kilometors que recorre el vehiculo: ");
-        double km = scanner.nextDouble();
-        scanner.nextLine();
+        double km = -1;
+        while (km < 0) {
+            System.out.print("Ingrese la cantidad de kilometors que recorre el vehiculo: ");
+            try {
+                km = scanner.nextDouble();
+                scanner.nextLine();
+                if (km < 0) {
+                    System.out.println(" Los kilómetros no pueden ser negativos.");
+                }
+            } catch (Exception e) {
+                System.out.println(" Error: Ingrese un número válido para los kilómetros.");
+                scanner.nextLine(); // Limpia error
+            }
+        }
         return km;
     }
     /////////////////////////////////////////////////////////////////
     public String leerNombreConductor() {
-        System.out.print("Nombre del nuevo conductor: ");
-        return scanner.nextLine();
+        String nombre = "";
+        while (nombre.isEmpty()) {
+            System.out.print("Nombre del nuevo conductor: ");
+            nombre = scanner.nextLine().trim();
+            if (nombre.isEmpty()) {
+                System.out.println(" El nombre no puede estar vacío.");
+            }
+        }
+        return nombre;
     }
     public int leerNitConductor() {
-        System.out.print("NIT del nuevo conductor: ");
-        int nit = scanner.nextInt();
-        scanner.nextLine();
+        int nit = -1;
+        while (nit <= 0) {
+            System.out.print("NIT del nuevo conductor: ");
+            try {
+                nit = scanner.nextInt();
+                scanner.nextLine();
+                if (nit <= 0) System.out.println("El NIT debe ser un número positivo.");
+            } catch (Exception e) {
+                System.out.println("Error: Ingrese solo números para el NIT.");
+                scanner.nextLine(); //limpieza
+            }
+        }
         return nit;
     }
-    
-    
 }
