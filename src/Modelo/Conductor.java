@@ -30,7 +30,7 @@ public class Conductor {
     public int getNit() {return nit;}
     //setters
     public void setNombre(String nombre) {this.nombre = nombre;}
-    public void setId(int nit) {this.nit = nit;}
+    public void setNit(int nit) {this.nit = nit;}
     
     
 

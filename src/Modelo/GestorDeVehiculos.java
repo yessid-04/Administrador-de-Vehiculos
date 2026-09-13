@@ -11,7 +11,7 @@ import java.io.IOException;
 public class GestorDeVehiculos {
     private final List<Vehiculo> vehiculos; 
     //constructor
-    public GestorDeVehiculos() {
+    public GestorDeVehiculos(GestorDeConductores gestorC) {
        this.vehiculos = new ArrayList<>();
        File archivo = new File("vehiculos.txt");
        if (archivo.exists()) {
@@ -21,6 +21,11 @@ public class GestorDeVehiculos {
                     String linea;
                     while ((linea = leerLineas.readLine()) != null) {
                         Vehiculo nuevoVehiculo = new Vehiculo(linea);
+                        int nitDelArchivo = nuevoVehiculo.getNitTemporal();
+                        Conductor conductorEnLista = gestorC.buscarPorNit(nitDelArchivo);
+                        if (conductorEnLista != null) {
+                            nuevoVehiculo.setConductor(conductorEnLista);
+                        }
                         this.vehiculos.add(nuevoVehiculo);
                     }
                 }
